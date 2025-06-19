@@ -1,10 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import { LoginButton } from "./components/LoginButton";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+
+  function handleChangeCounter(event: React.ChangeEvent<HTMLInputElement>) {
+    const { value } = event.target;
+
+    const counter = value ? Number(value) : 0;
+    setCount(counter);
+  }
 
   return (
     <>
@@ -18,7 +26,20 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <p>
+          <input
+            type="number"
+            value={count !== 0 ? count : ""}
+            className="counter-input"
+            data-cy="counter"
+            onChange={handleChangeCounter}
+          />
+        </p>
+
+        <button
+          data-cy="btn-counter-plus"
+          onClick={() => setCount((count) => count + 1)}
+        >
           count is {count}
         </button>
         <p>
@@ -28,8 +49,10 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+
+      <LoginButton />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

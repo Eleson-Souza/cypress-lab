@@ -40,3 +40,10 @@
 .read-the-docs {
   color: #888;
 }
+
+.counter-input {
+  height: 40px;
+  width: 150px;
+  text-align: center;
+  font-size: 15pt;
+}

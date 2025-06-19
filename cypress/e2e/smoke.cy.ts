@@ -3,7 +3,7 @@ describe("Smoke test", () => {
     cy.visit("/");
   });
 
-  it("carrega a home sem erros", () => {
+  it("load the homepage without errors", () => {
     cy.contains(/react|vite/i).should("be.visible");
   });
 });
