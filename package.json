@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "cy": "npx cypress open",
-    "cyx": "npx cypress run"
+    "cx": "npx cypress run"
   },
   "dependencies": {
     "react": "^19.1.0",

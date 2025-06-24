@@ -31,7 +31,7 @@ function App() {
             type="number"
             value={count !== 0 ? count : ""}
             className="counter-input"
-            data-cy="counter"
+            data-cy="counter-input"
             onChange={handleChangeCounter}
           />
         </p>
