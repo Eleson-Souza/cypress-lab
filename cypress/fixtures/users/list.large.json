@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "name": "Eleson Souza",
+    "email": "eleson.souza@mail.com",
+    "address": {
+      "street": "Rua das Acácias 123",
+      "suite": "Apt 10",
+      "city": "Belo Horizonte",
+      "zipcode": "30130000"
+    },
+    "website": "elesonsouza.dev"
+  },
+  {
+    "id": 2,
+    "name": "Amanda Ribeiro",
+    "email": "amanda.ribeiro@mail.com",
+    "address": {
+      "street": "Av. Brasil 450",
+      "suite": "Apt 22",
+      "city": "São Paulo",
+      "zipcode": "04567000"
+    },
+    "website": "amandaribeiro.com"
+  },
+  {
+    "id": 3,
+    "name": "Carlos Mendonça",
+    "email": "carlos.mendonca@mail.com",
+    "address": {
+      "street": "Rua da Liberdade 75",
+      "suite": "Casa 1",
+      "city": "Salvador",
+      "zipcode": "40000000"
+    },
+    "website": "mendonca.tech"
+  },
+  {
+    "id": 4,
+    "name": "Beatriz Lima",
+    "email": "beatriz.lima@mail.com",
+    "address": {
+      "street": "Rua São José 900",
+      "suite": "Apt 7",
+      "city": "Recife",
+      "zipcode": "52000000"
+    },
+    "website": "bealima.me"
+  },
+  {
+    "id": 5,
+    "name": "João Victor Silva",
+    "email": "joao.silva@mail.com",
+    "address": {
+      "street": "Av. Independência 111",
+      "suite": "Casa 4",
+      "city": "Curitiba",
+      "zipcode": "80000000"
+    },
+    "website": "joaovsilva.dev"
+  },
+  {
+    "id": 6,
+    "name": "Larissa Carvalho",
+    "email": "larissa.carvalho@mail.com",
+    "address": {
+      "street": "Rua das Palmeiras 310",
+      "suite": "Apt 16",
+      "city": "Florianópolis",
+      "zipcode": "88000000"
+    },
+    "website": "larissac.me"
+  },
+  {
+    "id": 7,
+    "name": "Tiago Fernandes",
+    "email": "tiago.fernandes@mail.com",
+    "address": {
+      "street": "Rua da Praia 223",
+      "suite": "Casa 2",
+      "city": "Vitória",
+      "zipcode": "29000000"
+    },
+    "website": "tiagofernandes.dev"
+  },
+  {
+    "id": 8,
+    "name": "Fernanda Castro",
+    "email": "fernanda.castro@mail.com",
+    "address": {
+      "street": "Av. Central 875",
+      "suite": "Apt 5",
+      "city": "Campo Grande",
+      "zipcode": "79000000"
+    },
+    "website": "fernandacastro.com.br"
+  },
+  {
+    "id": 9,
+    "name": "Rodrigo Matos",
+    "email": "rodrigo.matos@mail.com",
+    "address": {
+      "street": "Rua do Sol 88",
+      "suite": "Casa 10",
+      "city": "Fortaleza",
+      "zipcode": "60000000"
+    },
+    "website": "rmatos.net"
+  },
+  {
+    "id": 10,
+    "name": "Camila Oliveira",
+    "email": "camila.oliveira@mail.com",
+    "address": {
+      "street": "Rua Aurora 65",
+      "suite": "Apt 18",
+      "city": "Porto Alegre",
+      "zipcode": "90000000"
+    },
+    "website": "camilaoliveira.com"
+  },
+  {
+    "id": 11,
+    "name": "Mariana Freitas",
+    "email": "mariana.freitas@mail.com",
+    "address": {
+      "street": "Rua São Pedro 321",
+      "suite": "Apt 21",
+      "city": "Natal",
+      "zipcode": "59000000"
+    },
+    "website": "marifreitas.dev"
+  },
+  {
+    "id": 12,
+    "name": "Renato Albuquerque",
+    "email": "renato.albuquerque@mail.com",
+    "address": {
+      "street": "Av. das Nações 142",
+      "suite": "Casa 6",
+      "city": "Brasília",
+      "zipcode": "70000000"
+    },
+    "website": "renatoalb.com"
+  },
+  {
+    "id": 13,
+    "name": "Juliana Martins",
+    "email": "juliana.martins@mail.com",
+    "address": {
+      "street": "Rua do Comércio 45",
+      "suite": "Apt 9",
+      "city": "João Pessoa",
+      "zipcode": "58000000"
+    },
+    "website": "julimartins.dev"
+  },
+  {
+    "id": 14,
+    "name": "Pedro Henrique Lemos",
+    "email": "pedro.lemos@mail.com",
+    "address": {
+      "street": "Rua Bahia 310",
+      "suite": "Casa 3",
+      "city": "Uberlândia",
+      "zipcode": "38400000"
+    },
+    "website": "pedrolemos.tech"
+  },
+  {
+    "id": 15,
+    "name": "Aline Soares",
+    "email": "aline.soares@mail.com",
+    "address": {
+      "street": "Rua Goiás 789",
+      "suite": "Apt 6",
+      "city": "Goiânia",
+      "zipcode": "74000000"
+    },
+    "website": "alinesoares.dev"
+  },
+  {
+    "id": 16,
+    "name": "Daniela Teixeira",
+    "email": "daniela.teixeira@mail.com",
+    "address": {
+      "street": "Av. Beira-Mar 77",
+      "suite": "Apt 1",
+      "city": "Maceió",
+      "zipcode": "57000000"
+    },
+    "website": "daniteixeira.com"
+  },
+  {
+    "id": 17,
+    "name": "Leonardo Nunes",
+    "email": "leonardo.nunes@mail.com",
+    "address": {
+      "street": "Rua Amazonas 456",
+      "suite": "Casa 12",
+      "city": "Manaus",
+      "zipcode": "69000000"
+    },
+    "website": "lnunes.dev"
+  },
+  {
+    "id": 18,
+    "name": "Bruna Duarte",
+    "email": "bruna.duarte@mail.com",
+    "address": {
+      "street": "Rua Paraíba 112",
+      "suite": "Apt 14",
+      "city": "Campinas",
+      "zipcode": "13000000"
+    },
+    "website": "brunaduarte.com"
+  },
+  {
+    "id": 19,
+    "name": "Felipe Rezende",
+    "email": "felipe.rezende@mail.com",
+    "address": {
+      "street": "Av. das Árvores 998",
+      "suite": "Casa 8",
+      "city": "São Luís",
+      "zipcode": "65000000"
+    },
+    "website": "feliperezende.dev"
+  },
+  {
+    "id": 20,
+    "name": "Patrícia Almeida",
+    "email": "patricia.almeida@mail.com",
+    "address": {
+      "street": "Rua Monteiro Lobato 300",
+      "suite": "Apt 20",
+      "city": "Aracaju",
+      "zipcode": "49000000"
+    },
+    "website": "patriciaalmeida.me"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Eleson Souza",
+    "email": "eleson.souza@mail.com",
+    "address": {
+      "street": "Rua A 123",
+      "suite": "Apt 10",
+      "city": "Cidade A",
+      "zipcode": "11111111"
+    },
+    "website": "meusitea.com"
+  },
+  {
+    "id": 2,
+    "name": "Fulano da Silva",
+    "email": "fulano.silva@mail.com",
+    "address": {
+      "street": "Rua B 456",
+      "suite": "Casa 1",
+      "city": "Cidade B",
+      "zipcode": "22222222"
+    },
+    "website": "meusiteb.com"
+  },
+  {
+    "id": 3,
+    "name": "Beltrano Pereira",
+    "email": "beltrano.pereira@mail.com",
+    "address": {
+      "street": "Rua C 789",
+      "suite": "Casa 2",
+      "city": "Cidade C",
+      "zipcode": "33333333"
+    },
+    "website": "meusitec.com"
+  }
+]
