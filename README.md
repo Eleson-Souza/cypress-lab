@@ -84,6 +84,10 @@ cy.get("button").should("contain.text", "Salvar");
 
 ## 5. Fluxo E2E típico (login → checkout)
 
+```bash
+npx cypress open --e2e
+```
+
 ```ts
 cy.intercept("POST", "/api/login", { fixture: "auth/login.ok.json" }).as(
   "login"
@@ -97,36 +101,7 @@ cy.location("pathname").should("eq", "/catalog");
 
 ---
 
-## 6. CI Bitbucket Pipelines (essência)
-
-```yaml
-image: node:20
-pipelines:
-  pull-requests:
-    "**":
-      - parallel: 3
-        steps:
-          - step:
-              name: Cypress
-              image: cypress/browsers:node-20.11.0-chrome-124-ff-123
-              caches: [node, ~/.cache/Cypress]
-              script:
-                - npm ci
-                - npm run dev & npx wait-on http://localhost:5173
-                - npx cypress run # + --parallel se usar Cloud
-              artifacts:
-                - cypress/videos/**
-                - cypress/screenshots/**
-```
-
-Variáveis em **Repository → Settings → Pipelines → Env**:
-
-- `CYPRESS_RECORD_KEY` (opcional)
-- quaisquer segredos de API
-
----
-
-## 7. Troubleshooting rápido
+## 6. Troubleshooting rápido
 
 | Sintoma                                  | Possível causa                 | Remédio                                                       |
 | ---------------------------------------- | ------------------------------ | ------------------------------------------------------------- |
@@ -136,7 +111,7 @@ Variáveis em **Repository → Settings → Pipelines → Env**:
 
 ---
 
-## 8. Links úteis
+## 7. Links úteis
 
 - Docs Cypress: [https://docs.cypress.io](https://docs.cypress.io)
 - Real Events plugin: [https://github.com/dmtrKovalenko/cypress-real-events](https://github.com/dmtrKovalenko/cypress-real-events)
