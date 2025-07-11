@@ -32,19 +32,16 @@ npx cypress run
 
 ## 2. Cheatsheet de comandos
 
-| Categoria | Snippet | Dica |
-| --------- | ------- | ---- |
-|           |         |      |
-
-| **Estrutura** | `describe()`, `it()`, `beforeEach()`                                               | Mocha BDD                      |
-| ------------- | ---------------------------------------------------------------------------------- | ------------------------------ |
-| **Seleção**   | ` cy.get('[data-cy=btn]')``cy.contains('Texto') `                                  | use `data-cy` sempre           |
-| **Ações**     | `.click()`, `.type('abc{enter}')`, `.select('Opção')`                              | `{ force:true }` se oculto     |
-| **Asserts**   | `.should('be.visible')`, `.should('contain.text','Ok')`                            | retry automático 4 s           |
-| **Valores**   | `.invoke('text')`, `.then(val => …)`                                               | para capturar strings/números  |
-| **Rede**      | ` cy.intercept('GET','/api/*', {fixture:'file.json'}).as('api')``cy.wait('@api') ` | sem `cy.wait(ms)`              |
-| **Node side** | `cy.task('db:reset')`                                                              | faz seed/reset fora do browser |
-| **Debug**     | `cy.pause()`, `cy.debug()`, `Cypress.log()`                                        | step‑by‑step                   |
+| Categoria     | Snippet                                                                            | Dica                                                   |
+| ------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| **Estrutura** | `describe()`, `it()`, `beforeEach()`                                               | define blocos de teste (`describe`), casos (`it`) e pré-condições (`beforeEach`) |
+| **Seleção**   | `cy.get('[data-cy=btn]')`, `cy.contains('Texto')`                                  | use `data-cy` sempre                                   |
+| **Ações**     | `.click()`, `.type('abc{enter}')`, `.select('Opção')`                              | `{ force:true }` se oculto                            |
+| **Asserts**   | `.should('be.visible')`, `.should('contain.text','Ok')`                            | retry automático 4 s                                   |
+| **Valores**   | `.invoke('text')`, `.then(val => …)`                                               | para capturar strings/números                          |
+| **Rede**      | `cy.intercept('GET','/api/*', {fixture:'file.json'}).as('api')`, `cy.wait('@api')` | sem `cy.wait(ms)`                                      |
+| **Node side** | `cy.task('db:reset')`                                                              | faz seed/reset fora do browser                         |
+| **Debug**     | `cy.pause()`, `cy.debug()`, `Cypress.log()`                                        | step‑by‑step                                           |
 
 ---
 
