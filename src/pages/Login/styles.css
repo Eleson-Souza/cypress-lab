@@ -1,0 +1,41 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container .login-box {
+  min-width: 300px;
+  background: #333;
+  border: 1px solid #000;
+  border-radius: 8px;
+  padding: 0px 25px 25px;
+}
+
+.login-box form .form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-box form input {
+  font-size: 16px;
+  height: 35px;
+  padding: 0px 10px;
+}
+
+.login-box .btn-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 45px;
+}
+
+.login-box .btn-actions button:first-child {
+  background-color: red;
+}
+
+.login-box .btn-actions button:last-child {
+  background-color: green;
+}

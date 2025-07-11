@@ -23,5 +23,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "cypress/**/*.ts"]
+  "include": ["src", "cypress/**/*.ts", "cypress/**/*.tsx"]
 }
