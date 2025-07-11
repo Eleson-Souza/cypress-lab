@@ -1,54 +1,146 @@
-# React + TypeScript + Vite
+# 📚 Cypress Test Suite – Guia Rápido
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 1. Setup rápido
 
-Currently, two official plugins are available:
+```bash
+# instalar deps
+npm ci      # ou npm install
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# abrir dev‑server (Vite)
+npm run dev
 
-## Expanding the ESLint configuration
+# abrir Cypress UI (CT + E2E)
+npx cypress open    # escolha modo
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+# headless (CI) – roda tudo
+npx cypress run
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Scripts sugeridos
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```json
+"scripts": {
+  "dev": "vite",
+  "ct": "cypress open --ct",
+  "e2e": "cypress open --e2e",
+  "test": "cypress run",
+  "ci": "npm run dev & npx wait-on http://localhost:5173 && npm run test"
+}
 ```
+
+---
+
+## 2. Cheatsheet de comandos
+
+| Categoria | Snippet | Dica |
+| --------- | ------- | ---- |
+|           |         |      |
+
+| **Estrutura** | `describe()`, `it()`, `beforeEach()`                                               | Mocha BDD                      |
+| ------------- | ---------------------------------------------------------------------------------- | ------------------------------ |
+| **Seleção**   | ` cy.get('[data-cy=btn]')``cy.contains('Texto') `                                  | use `data-cy` sempre           |
+| **Ações**     | `.click()`, `.type('abc{enter}')`, `.select('Opção')`                              | `{ force:true }` se oculto     |
+| **Asserts**   | `.should('be.visible')`, `.should('contain.text','Ok')`                            | retry automático 4 s           |
+| **Valores**   | `.invoke('text')`, `.then(val => …)`                                               | para capturar strings/números  |
+| **Rede**      | ` cy.intercept('GET','/api/*', {fixture:'file.json'}).as('api')``cy.wait('@api') ` | sem `cy.wait(ms)`              |
+| **Node side** | `cy.task('db:reset')`                                                              | faz seed/reset fora do browser |
+| **Debug**     | `cy.pause()`, `cy.debug()`, `Cypress.log()`                                        | step‑by‑step                   |
+
+---
+
+## 3. Custom commands (exemplo)
+
+```ts
+// cypress/support/commands.ts
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      login(email: string, pwd: string): Chainable<void>;
+    }
+  }
+}
+Cypress.Commands.add("login", (email, pwd) => {
+  cy.session([email, pwd], () => {
+    cy.request("POST", "/api/login", { email, pwd }).then((r) =>
+      window.localStorage.setItem("token", r.body.token)
+    );
+  });
+});
+```
+
+Uso: `cy.login('user@site.com','123456');`
+
+---
+
+## 4. Component Testing
+
+```bash
+npx cypress open --ct   # wizard ➜ React + Vite
+```
+
+```tsx
+cy.mount(<Button label="Salvar" />);
+cy.get("button").should("contain.text", "Salvar");
+```
+
+---
+
+## 5. Fluxo E2E típico (login → checkout)
+
+```ts
+cy.intercept("POST", "/api/login", { fixture: "auth/login.ok.json" }).as(
+  "login"
+);
+cy.visit("/login");
+cy.get("[data-cy=email]").type("buyer@x.com");
+cy.get("[data-cy=pass]").type("123{enter}");
+cy.wait("@login");
+cy.location("pathname").should("eq", "/catalog");
+```
+
+---
+
+## 6. CI Bitbucket Pipelines (essência)
+
+```yaml
+image: node:20
+pipelines:
+  pull-requests:
+    "**":
+      - parallel: 3
+        steps:
+          - step:
+              name: Cypress
+              image: cypress/browsers:node-20.11.0-chrome-124-ff-123
+              caches: [node, ~/.cache/Cypress]
+              script:
+                - npm ci
+                - npm run dev & npx wait-on http://localhost:5173
+                - npx cypress run # + --parallel se usar Cloud
+              artifacts:
+                - cypress/videos/**
+                - cypress/screenshots/**
+```
+
+Variáveis em **Repository → Settings → Pipelines → Env**:
+
+- `CYPRESS_RECORD_KEY` (opcional)
+- quaisquer segredos de API
+
+---
+
+## 7. Troubleshooting rápido
+
+| Sintoma                                  | Possível causa                 | Remédio                                                       |
+| ---------------------------------------- | ------------------------------ | ------------------------------------------------------------- |
+| `ReferenceError: exports is not defined` | projeto ESM + ts-node CommonJS | renomeie `cypress.config.mjs` **ou** retire `"type":"module"` |
+| `Blank page` em run                      | CSP `frame-ancestors`          | iniciar Chrome com `--disable-web-security`                   |
+| Elemento não encontrado                  | seletor frágil                 | troque por `data-cy` + `cy.contains()`                        |
+
+---
+
+## 8. Links úteis
+
+- Docs Cypress: [https://docs.cypress.io](https://docs.cypress.io)
+- Real Events plugin: [https://github.com/dmtrKovalenko/cypress-real-events](https://github.com/dmtrKovalenko/cypress-real-events)
+- Mochawesome: [https://github.com/adamgruber/mochawesome](https://github.com/adamgruber/mochawesome)
